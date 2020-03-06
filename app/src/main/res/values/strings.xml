@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">ProjectApp</string>
+    <string name="app_name">The Walk\'Isen</string>
+    <string name="connection">Connexion</string>
+    <string name="validate">valider</string>
+    <string name="password">Mot de Passe</string>
+    <string name="user">Identifiant</string>
+    <string name="sign_up">s\'inscrire</string>
+    <string name="confirm_password">Confirmer Mot de passe</string>
+    <string name="surname">Prénom</string>
+    <string name="name">Nom</string>
+    <string name="birth_date">Date de naissance</string>
+    <string name="post_example">Exemple de Post</string>
+    <string name="express_yourself">Exprimez vous</string>
+    <string name="comment">Commentaire..</string>
+    <string name="datenaiss">Date :</string>
+    <string name="modify">Modify</string>
+    <string name="textview">TextView</string>
+    <string name="publier" />
+    <string name="publish">publier</string>
+    <string name="profile_picture">Profile picture</string>
 </resources>

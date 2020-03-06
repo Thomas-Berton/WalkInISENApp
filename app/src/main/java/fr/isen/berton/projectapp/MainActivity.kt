@@ -19,6 +19,8 @@ import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.activity_main.*
 import android.content.DialogInterface
 import androidx.appcompat.app.AlertDialog
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.database.FirebaseDatabase
 
 
 class MainActivity : AppCompatActivity() {
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Test()
 
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
@@ -55,7 +58,13 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
+fun Test(){
+    val database = FirebaseDatabase.getInstance()
+    val data = database.getReference("Users")
+    val newId = data.push().key.toString()
+    val User = Users(newId,"louis le patron")
+    data.child(newId).setValue(User)
+}
     fun requestPermission(permissionToRequest: String, requestCode: Int, handler: () -> Unit) {
         if (ContextCompat.checkSelfPermission(
                 this,
@@ -112,7 +121,7 @@ class MainActivity : AppCompatActivity() {
 
         val location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
-        if (location.latitude < 5.939995 && location.latitude > 5.938143 && location.longitude < 43.121123 && location.longitude > 43.120395) {
+        if (location.longitude < 5.98 && location.longitude > 5.9 && location.latitude < 43.2 && location.latitude > 43.05) {
 
 
 
