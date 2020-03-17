@@ -24,4 +24,8 @@
     <string name="validateB">VALIDER</string>
     <string name="inscription">Vous n\'avez pas de compte?</string>
     <string name="inscription2">Inscrivez-vous</string>
+    <string name="today">Aujourd\'hui</string>
+    <string name="step">Votre nombre d\'étage est</string>
+    <string name="PresentationText">Bienvenue Jean !</string>
+
 </resources>

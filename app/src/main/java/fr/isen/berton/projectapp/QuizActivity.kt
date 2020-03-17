@@ -101,6 +101,7 @@ class QuizActivity : AppCompatActivity() {
         quizView.isVisible = true
             val enonce = questionList[index]
             quizView.text = enonce
+        Log.d("coucou", "erreur lecture")
     }
 
     /*private fun displayRandomQuiz() {
