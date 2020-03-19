@@ -18,4 +18,5 @@
     <string name="publier" />
     <string name="publish">publier</string>
     <string name="profile_picture">Profile picture</string>
+    <string name="validateButton">TG</string>
 </resources>
