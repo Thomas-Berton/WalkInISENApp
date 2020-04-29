@@ -19,14 +19,35 @@ class QuizActivity : AppCompatActivity() {
     private val r1List = arrayListOf<String>()
     private val r2List = arrayListOf<String>()
     private val rvList = arrayListOf<String>()
+    private var index = 0
+    private var answersPoints = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
+        //val answersPoints = arrayListOf<Int>()
+       // var answersPoints = 0
+
+        goodAnswer.isVisible = false
+        badAnswer.isVisible = false
+        pengouinGood.isVisible = false
+
+
+
+        HomePagePicture.setOnClickListener {
+        val intent = Intent(this, HomePageActivity::class.java)
+        //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        intent.putExtra("points", answersPoints)
+
+
+        Log.d("test2","Les points sont : "+answersPoints)
+            setResult(RESULT_OK,intent)
+        finish()
+        }
+
 
         val database = FirebaseDatabase.getInstance()
-        var index = (1..3).random()
         val myRef = database.getReference("tips")
         val myRefQ = database.getReference("quiz/questions")
         val myRefR1 = database.getReference("quiz/réponse1")
@@ -47,6 +68,7 @@ class QuizActivity : AppCompatActivity() {
             }
         })
 
+
         myRefQ.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot)
             {
@@ -54,7 +76,52 @@ class QuizActivity : AppCompatActivity() {
                     val value = it.getValue(String::class.java)
                     questionList.add(value ?: "")
                 }
-                    displayRandomQuestion(index)
+                displayRandomQuestion(index)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
+
+       myRefR1.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot)
+            {
+                dataSnapshot.children.forEach {
+                    val value = it.getValue(String::class.java)
+                    r1List.add(value ?: "")
+                }
+                displayRandomAnswer1(index)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
+
+        myRefR2.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot)
+            {
+                dataSnapshot.children.forEach {
+                    val value = it.getValue(String::class.java)
+                    r2List.add(value ?: "")
+                }
+                displayRandomAnswer2(index)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
+
+        myRefRV.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot)
+            {
+                dataSnapshot.children.forEach {
+                    val value = it.getValue(String::class.java)
+                    rvList.add(value ?: "")
+                }
+                displayRandomAnswerV(index)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -84,11 +151,32 @@ class QuizActivity : AppCompatActivity() {
         }
 
         validateButton.setOnClickListener {
-               val intent = Intent(this, QuizActivity::class.java)
-               intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-               startActivity(intent)
-           }
-       }
+            //index++ appel a la fct des jours
+            displayRandomQuestion(index)
+            displayRandomAnswer1(index)
+            displayRandomAnswer2(index)
+            displayRandomAnswerV(index)
+            if (r3.isChecked === true){
+                answersPoints = answersPoints + 10
+                goodAnswer.isVisible = true
+                quizView.isVisible = false
+                pengouinGood.isVisible = true
+                r1.isVisible = false
+                r2.isVisible = false
+                r3.isVisible = false
+            }
+            if (r1.isChecked === true || r2.isChecked === true){
+                badAnswer.isVisible = true
+                quizView.isVisible = false
+                r1.isVisible = false
+                r2.isVisible = false
+                r3.isVisible = false
+            }
+            validateButton.isVisible = false
+
+        }
+    }
+
 
     private fun displayRandomTips() {
         tipsView.isVisible = true
@@ -101,20 +189,24 @@ class QuizActivity : AppCompatActivity() {
         quizView.isVisible = true
             val enonce = questionList[index]
             quizView.text = enonce
-        Log.d("coucou", "erreur lecture")
+
     }
 
-    /*private fun displayRandomQuiz() {
-        quizView.isVisible = true
-        //val randomIndexList = Random.nextInt(quizList.size)
-        val  enonce = quizList[0]
-        val faux1 = quizList[1]
-        val faux2 = quizList[2]
-        val vrai = quizList[3]
-        quizView.text = enonce
-        r1.text = faux1
-        r2.text = faux2
-        r3.text = vrai
-    }*/
+    private fun displayRandomAnswer1(index:Int){
+        r1.isVisible = true
+        val rep1 = r1List[index]
+        r1.text = rep1
+    }
 
+    private fun displayRandomAnswer2(index:Int){
+        r2.isVisible = true
+        val rep2 = r2List[index]
+        r2.text = rep2
+    }
+
+    private fun displayRandomAnswerV(index:Int){
+        r3.isVisible = true
+        val repV = rvList[index]
+        r3.text = repV
+    }
 }
