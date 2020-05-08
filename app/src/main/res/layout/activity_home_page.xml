@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".HomePageActivity">
 
     <TextView
         android:id="@+id/PresentationText"
@@ -49,8 +49,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/RankPicture"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/stats" />
 
     <ImageView
@@ -63,8 +61,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/AwarenessPicture"
         app:layout_constraintStart_toEndOf="@+id/HomePagePicture"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/podium" />
 
     <ImageView
@@ -87,8 +83,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/AwarenessPicture"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/logo" />
 
     <TextView
@@ -105,9 +99,9 @@
         android:id="@+id/progressBarHorizontal"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_height="500dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="76dp"
         android:indeterminate="false"
         android:max="100"
         android:minWidth="200dp"
@@ -119,22 +113,8 @@
         android:scaleX="1"
         android:scaleY="5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.68"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="315dp"
-        android:layout_height="151dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginEnd="27dp"
-        android:layout_marginBottom="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/AwarenessPicture"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.343"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/histogramme" />
 
     <ImageView
         android:id="@+id/logo"
@@ -146,19 +126,6 @@
         app:layout_constraintStart_toEndOf="@+id/PresentationText"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pingouin" />
-
-    <ImageView
-        android:id="@+id/reloadButton"
-        android:layout_width="24dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toStartOf="@+id/progressBarHorizontal"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHorizontalProgress"
-        app:srcCompat="@drawable/reload"/>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
