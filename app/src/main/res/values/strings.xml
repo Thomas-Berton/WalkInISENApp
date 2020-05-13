@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">The Walk\'Isen</string>
-    <string name="connection">Connexion</string>
+    <string name="connection">Authentification</string>
     <string name="validate">valider</string>
     <string name="password">Mot de Passe</string>
     <string name="user">Identifiant</string>
     <string name="sign_up">s\'inscrire</string>
-    <string name="confirm_password">Confirmer Mot de passe</string>
+    <string name="confirm_password">Confirmer mot de passe</string>
     <string name="surname">Prénom</string>
     <string name="name">Nom</string>
     <string name="birth_date">Date de naissance</string>
@@ -18,5 +18,14 @@
     <string name="publier" />
     <string name="publish">publier</string>
     <string name="profile_picture">Profile picture</string>
-    <string name="validateButton">TG</string>
+    <string name="validateButton">valider</string>
+    <string name="nomUser">E-mail</string>
+    <string name="welcome">Bienvenue!</string>
+    <string name="validateB">VALIDER</string>
+    <string name="inscription">Vous n\'avez pas de compte?</string>
+    <string name="inscription2">Inscrivez-vous</string>
+    <string name="today">Aujourd\'hui</string>
+    <string name="step">Votre nombre d\'étage est</string>
+    <string name="PresentationText">Bienvenue Jean !</string>
+
 </resources>

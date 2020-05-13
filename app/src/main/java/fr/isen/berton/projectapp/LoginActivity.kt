@@ -20,6 +20,10 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         mAuth = FirebaseAuth.getInstance();
 
+        validateToLogin.setOnClickListener{
+            doLogin()
+        }
+
 
     }
 
@@ -38,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
     fun updateUI(account: FirebaseUser?) {
         if (account != null) {
             Toast.makeText(this, "U Signed In successfully", Toast.LENGTH_LONG).show()
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, HomePageActivity::class.java))
         } else {
         }
     }
@@ -48,12 +52,16 @@ class LoginActivity : AppCompatActivity() {
         editPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD)
     }
 
-    public fun switchPage(view: View){
-            mAuth.signInWithEmailAndPassword(editUserName.text.toString(), editPassword.text.toString())
+    public fun doLogin(){
+        val email = editUserName.text.toString()
+        val password = editPassword.text.toString()
+
+        mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
-                        Log.d("Connexion", "Connexion reussi")
+                        Toast.makeText(baseContext, "Authentication success.",
+                            Toast.LENGTH_SHORT).show()
                         val user = mAuth.currentUser
                         updateUI(user)
                     } else {

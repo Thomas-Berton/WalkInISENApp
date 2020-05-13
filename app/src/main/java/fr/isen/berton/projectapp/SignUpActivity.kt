@@ -6,7 +6,9 @@ import com.google.firebase.auth.FirebaseUser
 import android.widget.Toast
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.util.*
 
 
@@ -23,8 +25,9 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
         mAuth = FirebaseAuth.getInstance()
-
-
+        button_signup.setOnClickListener(){
+            doRegister()
+        }
         Test()
 
 
@@ -45,6 +48,29 @@ class SignUpActivity : AppCompatActivity() {
             }
         }*/
 
+    }
+
+    private fun doRegister () {
+        val email = newEmail.text.toString()
+        val password = newConfirmedMdp.text.toString()
+
+        if(email.isEmpty() || password.isEmpty()){
+            Toast.makeText(this, "Please be sure to fill in all the fields", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener{
+                if(!it.isSuccessful) {return@addOnCompleteListener}
+                else {
+
+                    //esle if succes
+                    Log.d("SignUp", "Compte cree avec succes, id : ${it.result?.user?.uid} ")
+                }
+            }
+            .addOnFailureListener{
+                Log.d("SignUp", "FAILED to create account with succes... ${it.message} ")
+            }
     }
 
 
