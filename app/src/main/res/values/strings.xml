@@ -29,5 +29,7 @@
     <string name="PresentationText">Bienvenue Jean !</string>
     <string name="goodAnswer">Bonne réponse!\n\n A demain pour une nouvelle question</string>
     <string name="badAnswer">Mauvaise réponse.. \n\n Revenez demain pour une nouvelle question!</string>
+    <string name="quizDone">Vous avez déjà répondu! \n Revenez demain pour une nouvelle question!</string>
+
 
 </resources>

@@ -2,6 +2,8 @@ package fr.isen.berton.projectapp
 
 import android.content.Context
 import android.content.Intent
+import android.hardware.Sensor
+import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,15 +18,13 @@ import kotlinx.android.synthetic.main.activity_home_page.*
 class HomePageActivity : AppCompatActivity() {
     var currentProgress = 0
     var etage = 0
-    var answersPoint: Int = 0
     var thisActivity = this
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
-        //resetEtage()
-
+        //resetPoints()
         val sharedPref = thisActivity?.getPreferences(Context.MODE_PRIVATE) ?: return
         etage = sharedPref.getInt("points", 0)
         increaseProgress()
@@ -33,22 +33,20 @@ class HomePageActivity : AppCompatActivity() {
         RankPicture.setOnClickListener {}
         AwarenessPicture.setOnClickListener {
             val intent = Intent(this, QuizActivity::class.java)
-            // intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-            //Log.d("test","Les points sont : "+etage)
-
             startActivityForResult(intent, 0)
 
 
         }
         GamePicture.setOnClickListener { }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == RESULT_OK) {
+            //RECUPERATION DES POINTS DU QUIZ avec GETINTEXTRA
             etage += data?.getIntExtra("points", 0)!!
+            //Sauvegarde dans un shared preference
             val sharedPref = thisActivity?.getPreferences(Context.MODE_PRIVATE) ?: return
             with (sharedPref.edit()) {
                 putInt("points", etage)
@@ -58,13 +56,6 @@ class HomePageActivity : AppCompatActivity() {
         }
     }
 
-    fun resetEtage(){
-        val sharedPref = thisActivity?.getPreferences(Context.MODE_PRIVATE) ?: return
-        with (sharedPref.edit()) {
-            putInt("points", 0)
-            commit()
-        }
-    }
 
     fun increaseProgress() {
         if (currentProgress < 100) {
@@ -73,9 +64,16 @@ class HomePageActivity : AppCompatActivity() {
         }
     }
 
-    fun getPoints() {
-        answersPoint += intent.getSerializableExtra("points") as Int
-        etage = etage + answersPoint
+    fun resetPoints(){
+        val sharedPref = thisActivity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        with (sharedPref.edit()) {
+            putInt("points", 0)
+            commit()
+        }
     }
 
+    /*fun getPoints() {
+        answersPoint += intent.getSerializableExtra("points") as Int
+        etage = etage + answersPoint
+    }*/
 }
