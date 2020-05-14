@@ -8,8 +8,8 @@
     android:icon="@drawable/podium"/>
 <item android:title="Quiz"
     android:id="@+id/action_quiz"
-    android:icon="@drawable/podium"/>
+    android:icon="@drawable/icone_quiz"/>
 <item android:title="@string/pinguin"
     android:id="@+id/action_pinguin"
-    android:icon="@drawable/logo"/>
+    android:icon="@drawable/game"/>
 </menu>
