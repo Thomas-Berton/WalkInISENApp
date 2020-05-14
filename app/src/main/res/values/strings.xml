@@ -27,5 +27,7 @@
     <string name="today">Aujourd\'hui</string>
     <string name="step">Votre nombre d\'étage est</string>
     <string name="PresentationText">Bienvenue Jean !</string>
+    <string name="goodAnswer">Bonne réponse!\n\n A demain pour une nouvelle question</string>
+    <string name="badAnswer">Mauvaise réponse.. \n\n Revenez demain pour une nouvelle question!</string>
 
 </resources>

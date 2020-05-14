@@ -28,7 +28,6 @@ class SignUpActivity : AppCompatActivity() {
         button_signup.setOnClickListener(){
             doRegister()
         }
-        Test()
 
 
 
@@ -63,9 +62,7 @@ class SignUpActivity : AppCompatActivity() {
             .addOnCompleteListener{
                 if(!it.isSuccessful) {return@addOnCompleteListener}
                 else {
-
-                    //esle if succes
-                    Log.d("SignUp", "Compte cree avec succes, id : ${it.result?.user?.uid} ")
+                    addUserToDataBase()
                 }
             }
             .addOnFailureListener{
@@ -73,14 +70,30 @@ class SignUpActivity : AppCompatActivity() {
             }
     }
 
+    private fun addUserToDataBase () {
+        val uid = FirebaseAuth.getInstance().uid ?: ""
+        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
+        val user = User(newEmail.text.toString(),newSurName.text.toString(), newName.text.toString(),0)
 
-    fun Test(){
+        ref.setValue(user)
+            .addOnSuccessListener {
+                Log.d("SignUp", "Compte cree avec succes, id : $uid ")
+                startActivity(Intent(this, HomePageActivity::class.java))
+            }
+    }
+
+    class User (val userEmail: String ,val userSurname: String ,val userName: String , val userScore: Int){
+        constructor() : this("","","",0)
+    }
+
+
+/*    fun Test(){
         val database = FirebaseDatabase.getInstance()
         val data = database.getReference("Users")
         val newId = data.push().key.toString()
         val User = Users(newId,"louis le patron")
         data.child(newId).setValue(User)
-    }
+    }*/
 
     fun updateUI(account: FirebaseUser?) {
 
