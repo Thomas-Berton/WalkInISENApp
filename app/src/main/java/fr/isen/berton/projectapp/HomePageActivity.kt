@@ -41,7 +41,7 @@ class HomePageActivity : AppCompatActivity() {
                 R.id.action_quiz -> activity = "QuizActivity"
                 //R.id.action_pinguin -> activity = "@string/pinguin"
             }
-            Toast.makeText(this@HomePageActivity, "$activity clicked!", Toast.LENGTH_SHORT).show()
+           // Toast.makeText(this@HomePageActivity, "$activity clicked!", Toast.LENGTH_SHORT).show()
             if(activity == "HomePageActivity"){
                 startActivity(Intent(this, HomePageActivity::class.java))
             }

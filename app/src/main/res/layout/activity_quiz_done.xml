@@ -4,4 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/quizfait" />
+    android:background="@drawable/quizfait"
+    >
+
+</androidx.constraintlayout.widget.ConstraintLayout>
