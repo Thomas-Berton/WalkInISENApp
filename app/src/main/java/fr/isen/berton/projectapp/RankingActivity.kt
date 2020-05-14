@@ -1,18 +1,19 @@
 package fr.isen.berton.projectapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_ranking.*
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_home_page.*
 
 class RankingActivity : AppCompatActivity() {
 
 
     data class UserRank(
 
-        @PropertyName("name") val userName: String?,
+        @PropertyName("name") val userSurName: String?,
         @PropertyName("score") var userScore: Int?)
     {
         constructor() : this(null,null)
@@ -24,6 +25,32 @@ class RankingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ranking)
+        //-------------Navigation menu----------------------------
+        navigation_view.setSelectedItemId(R.id.action_Podium);
+        navigation_view.setOnNavigationItemSelectedListener {item ->
+            var activity = ""
+            when(item.itemId){
+                R.id.action_home-> activity = "HomePageActivity"
+                R.id.action_Podium -> activity = "RankingActivity"
+                R.id.action_quiz -> activity = "QuizActivity"
+                R.id.action_pinguin -> activity = "PinguinGame"
+            }
+            // Toast.makeText(this@QuizActivity, "$activity clicked!", Toast.LENGTH_SHORT).show()
+            if(activity == "HomePageActivity"){
+                startActivity(Intent(this, HomePageActivity::class.java))
+            }
+            if(activity == "RankingActivity"){
+                startActivity(Intent(this, RankingActivity::class.java))
+               }
+            if(activity == "QuizActivity"){
+                startActivity(Intent(this, QuizActivity::class.java))
+            }
+            if(activity == "PinguinGame"){
+                startActivity(Intent(this, PinguinGame::class.java))
+            }
+            return@setOnNavigationItemSelectedListener true
+        }
+        //--------------------------------------------------------------
 
         getUsersScore()
 
@@ -38,7 +65,7 @@ class RankingActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot){
                 dataSnapshot.children.forEach{
                     val user = it.getValue(SignUpActivity.User::class.java)
-                    val userRank = UserRank( user?.userName.toString(),user?.userScore)
+                    val userRank = UserRank( user?.userSurname.toString(),user?.userScore)
                     userRankList.add(userRank)
                 }
                 Log.d("Rank ARRAY",userRankList.toString() )
@@ -46,12 +73,36 @@ class RankingActivity : AppCompatActivity() {
 
                 Log.d("sorted RANKLIST",userRankList.toString())
 
+                displayUsersRanking()
+
             }
 
             override fun onCancelled(p0: DatabaseError) {
 
             }
         })
+    }
+
+    public fun displayUsersRanking () {
+        var arrayLength: Int = userRankList.size
+
+        Log.d("ARRAYLENGTH",arrayLength.toString())
+
+        userRnk1.text = userRankList[arrayLength-1]?.userSurName
+        userScore1.text = userRankList[arrayLength-1]?.userScore.toString()
+        userRnk2.text = userRankList[arrayLength-2]?.userSurName
+        userScore2.text = userRankList[arrayLength-2]?.userScore.toString()
+        userRnk3.text = userRankList[arrayLength-3]?.userSurName
+        userScore3.text = userRankList[arrayLength-3]?.userScore.toString()
+        userRnk4.text = userRankList[arrayLength-4]?.userSurName
+        userScore4.text = userRankList[arrayLength-4]?.userScore.toString()
+        userRnk5.text = userRankList[arrayLength-5]?.userSurName
+        userScore5.text = userRankList[arrayLength-5]?.userScore.toString()
+        userRnk6.text = userRankList[arrayLength-6]?.userSurName
+        userScore6.text = userRankList[arrayLength-6]?.userScore.toString()
+        userRnk7.text = userRankList[arrayLength-7]?.userSurName
+        userScore7.text = userRankList[arrayLength-7]?.userScore.toString()
+
     }
 }
 

@@ -9,7 +9,7 @@
 <item android:title="Quiz"
     android:id="@+id/action_quiz"
     android:icon="@drawable/icone_quiz"/>
-<item android:title="@string/pinguin"
+<item android:title="PinguinGame"
     android:id="@+id/action_pinguin"
     android:icon="@drawable/game"/>
 </menu>
