@@ -74,9 +74,9 @@ class QuizActivity : AppCompatActivity() {
                     R.id.action_home-> activity = "HomePageActivity"
                     //R.id.action_Podium -> activity = "Podium"
                     R.id.action_quiz -> activity = "QuizActivity"
-                    //R.id.action_pinguin -> activity = "@string/pinguin"
+                    R.id.action_pinguin -> activity = "PinguinGame"
                 }
-                Toast.makeText(this@QuizActivity, "$activity clicked!", Toast.LENGTH_SHORT).show()
+               // Toast.makeText(this@QuizActivity, "$activity clicked!", Toast.LENGTH_SHORT).show()
                 if(activity == "HomePageActivity"){
                     startActivity(Intent(this, HomePageActivity::class.java))
                 }
@@ -85,8 +85,9 @@ class QuizActivity : AppCompatActivity() {
                 if(activity == "QuizActivity"){
                     startActivity(Intent(this, QuizActivity::class.java))
                 }
-/*            if(activity == ""){
-            }*/
+                if(activity == "PinguinGame"){
+                    startActivity(Intent(this, PinguinGame::class.java))
+                }
                 return@setOnNavigationItemSelectedListener true
             }
             //--------------------------------------------------------------
