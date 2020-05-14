@@ -248,13 +248,13 @@ class QuizActivity : AppCompatActivity() {
                     userUpdatedScore = userScore + 10
 
                 val updatedUser = SignUpActivity.User(
-                    userName,
-                    userSurname,
                     userMail,
+                    userSurname,
+                    userName,
                     userUpdatedScore
                 )
 
-                ref.setValue(user)
+                ref.setValue(updatedUser)
                     .addOnSuccessListener {
                         Log.d("user score updated ", userUpdatedScore.toString())
                     }
