@@ -13,6 +13,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_home_page.*
+import kotlinx.android.synthetic.main.activity_quiz.HomePagePicture
 import kotlinx.android.synthetic.main.activity_quiz_done.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -37,6 +39,32 @@ class QuizActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         date = displayDate()
+        //-------------Navigation menu----------------------------
+        navigation_view.setSelectedItemId(R.id.action_home);
+        navigation_view.setOnNavigationItemSelectedListener {item ->
+
+            var activity = ""
+            when(item.itemId){
+                R.id.action_home-> activity = "Home"
+                R.id.action_Podium -> activity = "Podium"
+                R.id.action_quiz -> activity = "Quiz"
+                R.id.action_pinguin -> activity = "@string/pinguin"
+            }
+            if(activity == "Home"){
+                startActivity(Intent(this, HomePageActivity::class.java))
+            }
+/*            if(activity == "Podium"){
+               }*/
+            if(activity == "Quiz"){
+                val foo = Intent(this, QuizActivity::class.java)
+                foo.putExtra("idEvent", "none")
+                this.startActivity(foo)
+            }
+/*            if(activity == ""){
+            }*/
+            return@setOnNavigationItemSelectedListener true
+        }
+        //--------------------------------------------------------------
         //Toast.makeText(this,"Nous sommes le : "+date, Toast.LENGTH_LONG).show()
         val sharedPref = thisActivity?.getPreferences(Context.MODE_PRIVATE) ?: return
         oldDate = sharedPref.getInt("date",0)

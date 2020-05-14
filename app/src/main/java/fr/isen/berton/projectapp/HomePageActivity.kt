@@ -24,6 +24,32 @@ class HomePageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
+        //-------------Navigation menu----------------------------
+        navigation_view.setSelectedItemId(R.id.action_home);
+        navigation_view.setOnNavigationItemSelectedListener {item ->
+
+            var activity = ""
+            when(item.itemId){
+                R.id.action_home-> activity = "Home"
+                R.id.action_Podium -> activity = "Podium"
+                R.id.action_quiz -> activity = "Quiz"
+                R.id.action_pinguin -> activity = "@string/pinguin"
+            }
+            if(activity == "Home"){
+                val foo = Intent(this, HomePageActivity::class.java)
+                foo.putExtra("idEvent", "none")
+                this.startActivity(foo)
+            }
+/*            if(activity == "Podium"){
+               }*/
+            if(activity == "Quiz"){
+                startActivity(Intent(this, QuizActivity::class.java))
+            }
+/*            if(activity == ""){
+            }*/
+            return@setOnNavigationItemSelectedListener true
+        }
+        //--------------------------------------------------------------
         //resetPoints()
         val sharedPref = thisActivity?.getPreferences(Context.MODE_PRIVATE) ?: return
         etage = sharedPref.getInt("points", 0)
