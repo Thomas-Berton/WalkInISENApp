@@ -37,7 +37,7 @@ class HomePageActivity : AppCompatActivity() {
             var activity = ""
             when(item.itemId){
                 R.id.action_home-> activity = "HomePageActivity"
-                //R.id.action_Podium -> activity = "Podium"
+                R.id.action_Podium -> activity = "RankingActivity"
                 R.id.action_quiz -> activity = "QuizActivity"
                 R.id.action_pinguin -> activity = "PinguinGame"
             }
@@ -45,8 +45,9 @@ class HomePageActivity : AppCompatActivity() {
             if(activity == "HomePageActivity"){
                 startActivity(Intent(this, HomePageActivity::class.java))
             }
-/*            if(activity == "Podium"){
-               }*/
+           if(activity == "RankingActivity"){
+            startActivity(Intent(this, RankingActivity::class.java))
+               }
             if(activity == "QuizActivity"){
                 startActivity(Intent(this, QuizActivity::class.java))
             }

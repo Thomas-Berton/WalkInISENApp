@@ -17,6 +17,7 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".QuizActivity" />
+        <activity android:name=".PinguinGame" />
         <activity android:name=".RankingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
