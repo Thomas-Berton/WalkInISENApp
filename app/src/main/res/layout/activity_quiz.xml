@@ -96,47 +96,6 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/tipsfond3" />
 
-    <ImageView
-        android:id="@+id/HomePagePicture"
-        android:layout_width="73dp"
-        android:layout_height="43dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/RankPicture"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.53"
-        app:srcCompat="@drawable/stats" />
-
-    <ImageView
-        android:id="@+id/RankPicture"
-        android:layout_width="95dp"
-        android:layout_height="43dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/AwarenessPicture"
-        app:layout_constraintStart_toEndOf="@+id/HomePagePicture"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/podium" />
-
-    <ImageView
-        android:id="@+id/AwarenessPicture"
-        android:layout_width="83dp"
-        android:layout_height="44dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/GamePicture"
-        app:layout_constraintStart_toEndOf="@+id/RankPicture"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/planet" />
-
-    <ImageView
-        android:id="@+id/GamePicture"
-        android:layout_width="83dp"
-        android:layout_height="45dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AwarenessPicture"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/logo" />
-
     <TextView
         android:id="@+id/tipsView"
         android:layout_width="353dp"
@@ -207,5 +166,15 @@
         app:layout_constraintTop_toTopOf="@+id/fondQuizz"
         app:layout_constraintVertical_bias="0.89"
         app:srcCompat="@drawable/penguin" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemIconTint="@drawable/nav_item_background"
+        app:itemTextColor="@drawable/nav_item_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

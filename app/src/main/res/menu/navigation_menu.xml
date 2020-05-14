@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <item android:title="Home"
     android:id="@+id/action_home"
-    android:icon="@drawable/stats"/>
+    android:icon="@drawable/home_icon_app"/>
 <item android:title="Podium"
     android:id="@+id/action_Podium"
     android:icon="@drawable/podium"/>
 <item android:title="Quiz"
     android:id="@+id/action_quiz"
-    android:icon="@drawable/planet"/>
+    android:icon="@drawable/podium"/>
 <item android:title="@string/pinguin"
     android:id="@+id/action_pinguin"
     android:icon="@drawable/logo"/>
