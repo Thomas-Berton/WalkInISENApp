@@ -51,23 +51,36 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun doRegister () {
         val email = newEmail.text.toString()
-        val password = newConfirmedMdp.text.toString()
+        val password = newMdp.text.toString()
+        val passwordConfirmed = newConfirmedMdp.text.toString()
 
         if(email.isEmpty() || password.isEmpty()){
             Toast.makeText(this, "Please be sure to fill in all the fields", Toast.LENGTH_SHORT).show()
             return
         }
+        if(!email.contains("@isen.yncrea.fr")){
+            Toast.makeText(this, "Utilisez un mail de type '@isen.yncrea.fr'", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener{
-                if(!it.isSuccessful) {return@addOnCompleteListener}
-                else {
-                    addUserToDataBase()
+        if(password.length > 5 && password == passwordConfirmed ) {
+
+            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener {
+                    if (!it.isSuccessful) {
+                        return@addOnCompleteListener
+                    } else {
+                        addUserToDataBase()
+                    }
                 }
-            }
-            .addOnFailureListener{
-                Log.d("SignUp", "FAILED to create account with succes... ${it.message} ")
-            }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Erreur... ${it.message} ", Toast.LENGTH_SHORT).show()
+                    Log.d("SignUp", "FAILED to create account with succes... ${it.message} ")
+                }
+        }else {
+            Toast.makeText(this, "Veuillez saisir le meme mot de passe (min 6 carateres)", Toast.LENGTH_SHORT).show()
+            return
+        }
     }
 
     private fun addUserToDataBase () {

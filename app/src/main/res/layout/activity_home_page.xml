@@ -44,7 +44,6 @@
         app:layout_constraintTop_toTopOf="@+id/Name" />
 
 
-
     <ImageView
         android:id="@+id/HomePagePicture"
         android:layout_width="73dp"
@@ -110,9 +109,9 @@
         android:textColor="@color/colorAccent"
         android:textSize="46sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/progressBarHorizontal"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
@@ -133,13 +132,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="BRAVO !"
+        android:text="BRAVO!"
         android:textColor="@color/colorAccent"
         android:textSize="33sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/progressBarHorizontal"
+        app:layout_constraintEnd_toEndOf="@+id/Score"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/Score"
         app:layout_constraintTop_toBottomOf="@+id/Score" />
 
     <ProgressBar
@@ -181,8 +180,6 @@
         app:itemTextColor="@drawable/nav_item_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/navigation_menu" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
