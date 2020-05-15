@@ -31,6 +31,7 @@
     <string name="badAnswer">Mauvaise réponse.. \n\n Revenez demain pour une nouvelle question!</string>
     <string name="quizDone">Vous avez déjà répondu! \n Revenez demain pour une nouvelle question!</string>
     <string name="pinguin">Pinguin</string>
+    <string name="loading">loading..</string>
 
 
 </resources>
