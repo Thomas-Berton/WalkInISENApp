@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -58,6 +60,7 @@ class HomePageActivity : AppCompatActivity() {
         }
         //--------------------------------------------------------------
 
+        checkIfUserLoggedIn()
         getUserData()
 
         //resetEtage()
@@ -81,6 +84,27 @@ class HomePageActivity : AppCompatActivity() {
         GamePicture.setOnClickListener { }
 
 
+    }
+
+    private fun checkIfUserLoggedIn () {
+        val uid = FirebaseAuth.getInstance().uid
+        if(uid == null){
+            val intent = Intent(this,LoginActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        FirebaseAuth.getInstance().signOut()
+
+        val intent = Intent(this,LoginActivity::class.java)
+        startActivity(intent)
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.nav_menu_logout,menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
