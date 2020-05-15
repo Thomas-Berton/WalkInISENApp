@@ -101,30 +101,31 @@
     -->
 
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:text="@string/today"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/progressBarHorizontal"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/progressBarHorizontal" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:text="@string/today"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/progressBarHorizontal"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/progressBarHorizontal" />
 
-        <TextView
-            android:id="@+id/Score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:textColor="@color/colorAccent"
-            android:textSize="46sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/textView5"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+    <TextView
+        android:id="@+id/Score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="loading.."
+        android:textColor="@color/colorAccent"
+        android:textSize="46sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <TextView
             android:id="@+id/textView5"
@@ -140,21 +141,50 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="BRAVO!"
-            android:textColor="@color/colorAccent"
-            android:textSize="33sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/Score"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/Score"
-            app:layout_constraintTop_toBottomOf="@+id/Score" />
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:text="BRAVO!"
+        android:textColor="@color/colorAccent"
+        android:textSize="33sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/Score"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/Score"
+        app:layout_constraintTop_toBottomOf="@+id/Score" />
 
-        <ProgressBar
+    <TextView
+        android:id="@+id/dateView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/abel"
+        android:text="dateView"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/progressBarHorizontal"
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/progressBarHorizontal" />
+
+    <TextView
+        android:id="@+id/Score2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/abel"
+        android:text="score "
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.262"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateView" />
+
+    <ProgressBar
             android:id="@+id/progressBarHorizontal"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="200dp"
@@ -198,6 +228,49 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/navigation_menu" />
+
+    <TextView
+        android:id="@+id/stepsValue"
+        android:layout_width="64dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/abel"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.178"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textVieww"
+        android:layout_width="42dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/abel"
+        android:text="Pas"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/Score"
+        app:layout_constraintStart_toStartOf="@+id/Score"
+        app:layout_constraintTop_toBottomOf="@+id/Score" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/abel"
+        android:text="@string/step"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/stepsValue"
+        app:layout_constraintHorizontal_bias="0.369"
+        app:layout_constraintStart_toStartOf="@+id/stepsValue"
+        app:layout_constraintTop_toBottomOf="@+id/stepsValue" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

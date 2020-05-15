@@ -86,7 +86,7 @@ class SignUpActivity : AppCompatActivity() {
     private fun addUserToDataBase () {
         val uid = FirebaseAuth.getInstance().uid ?: ""
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
-        val user = User(newEmail.text.toString(),newSurName.text.toString(), newName.text.toString(),0)
+        val user = User(newEmail.text.toString(),newSurName.text.toString(), newName.text.toString(),0,0)
 
         ref.setValue(user)
             .addOnSuccessListener {
@@ -95,8 +95,8 @@ class SignUpActivity : AppCompatActivity() {
             }
     }
 
-    class User (val userEmail: String ,val userSurname: String ,val userName: String , val userScore: Int){
-        constructor() : this("","","",0)
+    class User (val userEmail: String ,val userSurname: String ,val userName: String , val userScore: Int, val userSteps: Int){
+        constructor() : this("","","",0, 0)
     }
 
 

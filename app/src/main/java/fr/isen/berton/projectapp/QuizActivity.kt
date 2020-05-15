@@ -235,14 +235,14 @@ class QuizActivity : AppCompatActivity() {
     private fun updateUserScore () {
 
         val uid = FirebaseAuth.getInstance().uid
-        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
+        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid/userScore")
         var userScore: Int = 0
         var userUpdatedScore: Int = 0
         ref.addListenerForSingleValueEvent(object: ValueEventListener{
 
             override fun onDataChange(dataSnapshot: DataSnapshot){
                 val user = dataSnapshot.getValue(SignUpActivity.User::class.java)
-                    val userName =   user?.userName.toString().capitalize()
+                /*    val userName =   user?.userName.toString().capitalize()
                     val userSurname = user?.userSurname.toString().capitalize()
                     val userMail = user?.userEmail.toString()
                     userScore = user!!.userScore
@@ -254,13 +254,20 @@ class QuizActivity : AppCompatActivity() {
                     userName,
                     userUpdatedScore
                 )
+*/
 
-                ref.setValue(updatedUser)
+                userScore = user!!.userScore
+                userUpdatedScore = userScore + 10
+
+
+                ref.setValue(userUpdatedScore)
                     .addOnSuccessListener {
                         Log.d("user score updated ", userUpdatedScore.toString())
                     }
 
             }
+
+
 
             override fun onCancelled(p0: DatabaseError) {
 
