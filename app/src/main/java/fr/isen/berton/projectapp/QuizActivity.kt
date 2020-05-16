@@ -235,7 +235,8 @@ class QuizActivity : AppCompatActivity() {
     private fun updateUserScore () {
 
         val uid = FirebaseAuth.getInstance().uid
-        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid/userScore")
+        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
+        val refScore = FirebaseDatabase.getInstance().getReference("/users/$uid/userScore")
         var userScore: Int = 0
         var userUpdatedScore: Int = 0
         ref.addListenerForSingleValueEvent(object: ValueEventListener{
@@ -260,7 +261,7 @@ class QuizActivity : AppCompatActivity() {
                 userUpdatedScore = userScore + 10
 
 
-                ref.setValue(userUpdatedScore)
+                refScore.setValue(userUpdatedScore)
                     .addOnSuccessListener {
                         Log.d("user score updated ", userUpdatedScore.toString())
                     }
