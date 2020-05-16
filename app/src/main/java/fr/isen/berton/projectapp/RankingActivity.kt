@@ -13,10 +13,12 @@ class RankingActivity : AppCompatActivity() {
 
     data class UserRank(
 
+        @PropertyName("id") var userId: String?,
         @PropertyName("name") val userSurName: String?,
         @PropertyName("score") var userScore: Int?)
+
     {
-        constructor() : this(null,null)
+        constructor() : this(null,null,null)
     }
 
     var userRankList : ArrayList<UserRank?> =  ArrayList<UserRank?>()
@@ -59,31 +61,43 @@ class RankingActivity : AppCompatActivity() {
 
     private fun getUsersScore () {
 
+        val uid = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/users")
+        val refUser = FirebaseDatabase.getInstance().getReference("/users/$uid")
+        var loggedUserRank = UserRank()
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot){
                 dataSnapshot.children.forEach{
+
                     val user = it.getValue(SignUpActivity.User::class.java)
-                    val userRank = UserRank( user?.userSurname.toString(),user?.userScore)
+                    val userRank = UserRank(it.key.toString(), user?.userSurname.toString(),user?.userScore)
                     userRankList.add(userRank)
+
+                    if(it.key == uid){
+                        loggedUserRank = UserRank(uid, user?.userSurname.toString(),user?.userScore )
+                    }
+
                 }
                 Log.d("Rank ARRAY",userRankList.toString() )
                 userRankList.sortBy { it?.userScore }
 
                 Log.d("sorted RANKLIST",userRankList.toString())
 
-                displayUsersRanking()
+                displayUsersRanking(loggedUserRank)
 
             }
+
+
 
             override fun onCancelled(p0: DatabaseError) {
 
             }
         })
+
     }
 
-    public fun displayUsersRanking () {
+    public fun displayUsersRanking (userToFind: UserRank) {
         var arrayLength: Int = userRankList.size
 
         Log.d("ARRAYLENGTH",arrayLength.toString())
@@ -102,6 +116,17 @@ class RankingActivity : AppCompatActivity() {
         userScore6.text = userRankList[arrayLength-6]?.userScore.toString()
         userRnk7.text = userRankList[arrayLength-7]?.userSurName
         userScore7.text = userRankList[arrayLength-7]?.userScore.toString()
+
+       /* userRankList.find(){
+            it?.userId == uid
+            return
+        }*/
+        val loggedUserIndex = userRankList.indexOf(userToFind)
+        val loggedUserRankFromIndex = arrayLength - loggedUserIndex
+        if(loggedUserIndex != -1){
+            loggedUserScore.text = userRankList[loggedUserIndex]?.userScore.toString()
+            loggedUserRank.text = loggedUserRankFromIndex.toString()
+        }
 
     }
 }

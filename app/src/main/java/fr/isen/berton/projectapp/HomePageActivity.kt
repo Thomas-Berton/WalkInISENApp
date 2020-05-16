@@ -163,7 +163,7 @@ class HomePageActivity : AppCompatActivity(), SensorEventListener{
                 fetchedScore = user!!.userScore
                 progressBarHorizontal.progress = fetchedScore
                 totalSteps = fetchedSteps
-                totalScore = fetchedScore + fetchedSteps
+                totalScore = fetchedScore   // REMOVED " + fetchedScore"
                 displayScore()
                 displaySteps()
 

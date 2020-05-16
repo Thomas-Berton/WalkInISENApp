@@ -115,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="23dp"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginEnd="55dp"
         android:layout_marginBottom="220dp"
         android:text="@string/loading"
         android:textColor="@color/colorAccent"
@@ -213,7 +213,6 @@
         android:layout_width="17dp"
         android:layout_height="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="22dp"
         android:text="4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
@@ -253,4 +252,77 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/num2" />
+
+    <TextView
+        android:id="@+id/loggedUserRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="loading..."
+        android:textColor="@color/colorAccent"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Votre classement : "
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/loggedUserRank"
+        app:layout_constraintTop_toBottomOf="@+id/userRnk7" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="-"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/loggedUserRank"
+        app:layout_constraintStart_toEndOf="@+id/loggedUserRank"
+        app:layout_constraintTop_toTopOf="@+id/loggedUserRank" />
+
+    <TextView
+        android:id="@+id/loggedUserScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="loading.."
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView12"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toTopOf="@+id/textView12" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:text="points"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/loggedUserScore"
+        app:layout_constraintStart_toEndOf="@+id/loggedUserScore"
+        app:layout_constraintTop_toTopOf="@+id/loggedUserScore" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="35sp"
+        android:layout_height="50sp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/loggedUserRank"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/loggedUserRank"
+        app:srcCompat="@drawable/podium" />
 </androidx.constraintlayout.widget.ConstraintLayout>
