@@ -178,6 +178,8 @@ class HomePageActivity : AppCompatActivity(), SensorEventListener{
 
     private fun updateUserStepsScore (additionalStepScore: Int) {
 
+        Log.d("UPDATE USER FUN TRIGGER",additionalStepScore.toString())
+
         val uid = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid/")
         val refScore = FirebaseDatabase.getInstance().getReference("/users/$uid/userScore")
@@ -264,7 +266,6 @@ class HomePageActivity : AppCompatActivity(), SensorEventListener{
                 Score.text = fetchedScore.toString()
 
         */
-
         }
         }
 

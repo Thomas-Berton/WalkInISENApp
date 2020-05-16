@@ -239,44 +239,24 @@ class QuizActivity : AppCompatActivity() {
         val refScore = FirebaseDatabase.getInstance().getReference("/users/$uid/userScore")
         var userScore: Int = 0
         var userUpdatedScore: Int = 0
+
         ref.addListenerForSingleValueEvent(object: ValueEventListener{
-
             override fun onDataChange(dataSnapshot: DataSnapshot){
+
                 val user = dataSnapshot.getValue(SignUpActivity.User::class.java)
-                /*    val userName =   user?.userName.toString().capitalize()
-                    val userSurname = user?.userSurname.toString().capitalize()
-                    val userMail = user?.userEmail.toString()
-                    userScore = user!!.userScore
-                    userUpdatedScore = userScore + 10
-
-                val updatedUser = SignUpActivity.User(
-                    userMail,
-                    userSurname,
-                    userName,
-                    userUpdatedScore
-                )
-*/
-
                 userScore = user!!.userScore
                 userUpdatedScore = userScore + 10
-
 
                 refScore.setValue(userUpdatedScore)
                     .addOnSuccessListener {
                         Log.d("user score updated ", userUpdatedScore.toString())
                     }
-
             }
-
-
 
             override fun onCancelled(p0: DatabaseError) {
 
             }
         })
-
-
-
     }
 
     private fun displayRandomTips() {
