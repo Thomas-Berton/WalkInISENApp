@@ -36,5 +36,9 @@ class PinguinGame : AppCompatActivity() {
             return@setOnNavigationItemSelectedListener true
         }
         //--------------------------------------------------------------
+        play_button.setOnClickListener{
+            val intent = Intent(this, GameRetry::class.java)
+            startActivity(intent)
+        }
     }
 }
