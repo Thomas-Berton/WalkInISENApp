@@ -1,4 +1,4 @@
-package fr.isen.tavera.projetbusiness
+package fr.isen.berton.projectapp
 
 import android.graphics.Point
 import androidx.appcompat.app.AppCompatActivity

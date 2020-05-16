@@ -1,4 +1,4 @@
-package fr.isen.tavera.projetbusiness
+package fr.isen.berton.projectapp
 
 //TODO GameOver (restart ou quit)
 //retirer la physique du pingouin pour plus de facilité
