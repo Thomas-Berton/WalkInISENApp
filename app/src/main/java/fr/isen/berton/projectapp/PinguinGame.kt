@@ -3,7 +3,9 @@ package fr.isen.berton.projectapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_pinguin_game.*
 import kotlinx.android.synthetic.main.activity_quiz.*
+import kotlinx.android.synthetic.main.activity_quiz.navigation_view
 
 class PinguinGame : AppCompatActivity() {
 

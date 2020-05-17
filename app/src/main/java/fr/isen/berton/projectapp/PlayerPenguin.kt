@@ -1,9 +1,10 @@
-package fr.isen.tavera.projetbusiness
+package fr.isen.berton.projectapp
 
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.RectF
+import fr.isen.berton.projectapp.R
 import kotlin.math.exp
 
 class PlayerPenguin(context: Context, screenX: Int, screenY: Int){

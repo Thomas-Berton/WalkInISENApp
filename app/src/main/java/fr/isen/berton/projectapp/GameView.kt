@@ -22,6 +22,7 @@ import android.graphics.Point
 import android.util.Log
 import android.view.MotionEvent
 import android.view.SurfaceView
+import fr.isen.berton.projectapp.PlayerPenguin
 
 class GameView(context: Context, private val size: Point): SurfaceView(context), Runnable {
 
