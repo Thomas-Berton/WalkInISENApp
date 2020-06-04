@@ -7,6 +7,10 @@ import android.widget.Toast
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.util.*
@@ -18,6 +22,18 @@ class SignUpActivity : AppCompatActivity() {
     var currentDate = Date()
 
 
+    lateinit var optionPizza : Spinner
+
+
+
+
+// Create an ArrayAdapter using the string array and a default spinner layout
+
+    var optionsPizzas =  ArrayList<String?>()
+
+
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,32 +41,40 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
         mAuth = FirebaseAuth.getInstance()
-        button_signup.setOnClickListener(){
-            doRegister()
+        button_order.setOnClickListener(){
+           /* doRegister()*/
         }
 
 
+        optionPizza = findViewById(R.id.pizzaSpinner) as Spinner
+
+        optionsPizzas.add("Chrizzo")
+        optionsPizzas.add("Peperonni")
+        optionsPizzas.add("Indienne")
+        optionsPizzas.add("Armenienne")
+        optionsPizzas.add("Royale")
+        optionPizza.adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, optionsPizzas)
 
 
 
-       /* date_input.setOnFocusChangeListener { view, hasFocus ->
-            if(hasFocus) {
-                date_input.clearFocus()
-                val dialog = DatePickerDialog(this,
-                    DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-                        onDateChoose(year, month, dayOfMonth)
-                    },
-                    1990,
-                    7,
-                    25)
-                dialog.show()
-            }
-        }*/
+        /* date_input.setOnFocusChangeListener { view, hasFocus ->
+             if(hasFocus) {
+                 date_input.clearFocus()
+                 val dialog = DatePickerDialog(this,
+                     DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                         onDateChoose(year, month, dayOfMonth)
+                     },
+                     1990,
+                     7,
+                     25)
+                 dialog.show()
+             }
+         }*/
 
     }
 
-    private fun doRegister () {
-        val email = newEmail.text.toString()
+/*    private fun doRegister () {
+        val email = newPhone.text.toString()
         val password = newMdp.text.toString()
         val passwordConfirmed = newConfirmedMdp.text.toString()
 
@@ -81,12 +105,12 @@ class SignUpActivity : AppCompatActivity() {
             Toast.makeText(this, "Veuillez saisir le meme mot de passe (min 6 carateres)", Toast.LENGTH_SHORT).show()
             return
         }
-    }
+    }*/
 
     private fun addUserToDataBase () {
         val uid = FirebaseAuth.getInstance().uid ?: ""
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
-        val user = User(newEmail.text.toString(),newSurName.text.toString(), newName.text.toString(),0,0)
+        val user = User(newPhone.text.toString(),newSurName.text.toString(), newName.text.toString(),0,0)
 
         ref.setValue(user)
             .addOnSuccessListener {

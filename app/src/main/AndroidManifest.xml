@@ -19,7 +19,9 @@
         <activity android:name=".QuizActivity" />
         <activity android:name=".PinguinGame" />
         <activity android:name=".GameRetry"/>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".ValidActivity"/>
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
